@@ -1,0 +1,42 @@
+const {Schema, model} = require('mongoose');
+
+const ProductSchema = new Schema({
+  shop: {type: String, required: true},
+  shop_id: {type: String, required: true},
+  category: {type: String, required: true},
+  goods_id: {type: String, required: true},
+  org_id: {type: Number},
+  org_shop_id : {type: Number, default: 100},
+  origin_category: {type: String},
+  sku_id: {type: String},
+  name: {type: String},
+  brand_name: {type: String},
+  origin: {type: String, default: false},
+  generation: {type: String},
+  color: [{type: String}],
+  launch_date: {type: String},
+  options: [{
+    size: {type: String},
+    stock: {type: Number, default: 3},
+    optnm: {type: String, default: "사이즈"},
+    goods_consumer: {type: Number},
+    goods_price: {type: Number, default: this.goods_consumer},
+    barcode: {type: String},
+    SkuID: {type: String},
+  }],
+  price: {type: Number, default: this.options.reduce((prev,curr)=> prev.goods_price < curr.goods_price ? prev.goods_price : curr.goods_price)},
+  img_urls: [{type: String}],
+  crawl_url: {type: String},
+  description: {type: String},
+  measurements: {type: String},
+  composition: {type: String},
+  modelsize: {type: String},
+  matched_brandno: {type: Number, required: true},
+  matched_category: {type: Number, required: true},
+  matched_goodsnm: {type: String},
+  category_base_goodsnm: {type: String},
+  discount_rate: {type: Number, default: 100-Math.round(this.goods_price/goods_consumer*100)},
+  crawl_result: {type: Boolean},
+});
+
+module.exports = model('Product', ProductSchema);

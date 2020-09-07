@@ -1,0 +1,37 @@
+exports.state = {
+  pie: {
+    true: 1,
+    false: 1,
+    noColor: 1,
+  },
+  bar: {
+    red: 1,
+    blue: 1,
+    pink: 1,
+    gold: 1,
+    black: 1,
+    silver: 1,
+    white: 1,
+    navy: 1,
+    ivory: 1,
+    green: 1,
+    orange: 1,
+    brown: 1,
+    gray: 1,
+    beige: 1,
+    yellow: 1,
+    purple: 1,
+  },
+  line: {
+    date: [],
+    color: [],
+    category: [],
+    brand: [],
+  },
+  check: {
+    color: 1,
+    category: 1,
+    brand: 1,
+  },
+  colorTable: [{}],
+};
